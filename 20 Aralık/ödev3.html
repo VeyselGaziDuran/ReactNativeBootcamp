@@ -4,6 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 20px;
+      }
+
+      input {
+        padding: 5px;
+        margin: 5px;
+      }
+
+      button {
+        padding: 10px;
+        margin: 5px;
+        cursor: pointer;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
   </head>
   <body>
     <input type="number" id="inputValueOne" />
@@ -32,17 +58,14 @@
       }
 
       function performOperation(operator, operationName) {
-        // İki input değerini al
         let inputValueOne = document.getElementById('inputValueOne').value;
         let inputValueTwo = document.getElementById('inputValueTwo').value;
 
-        // Girilen değerleri kontrol et
         if (isNaN(inputValueOne) || isNaN(inputValueTwo)) {
           alert('Geçersiz değer! Lütfen iki sayı girin.');
           return;
         }
 
-        // İki sayı ile matematiksel işlemi gerçekleştir
         let result;
         switch (operator) {
           case 'X':
@@ -62,10 +85,7 @@
             return;
         }
 
-        // Sonucu alert olarak göster
-        alert(`${operationName} Sonuç: ${result.toFixed(5)}`); // Virgülden sonra 2 basamak göster
-
-        // Inputları temizle
+        alert(`${operationName} Sonuç: ${result.toFixed(5)}`);
         document.getElementById('inputValueOne').value = '';
         document.getElementById('inputValueTwo').value = '';
       }
