@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="number" id="inputValueOne" />
+    <input type="number" id="inputValueTwo" />
+
+    <button onclick="alertMultiply()">X</button>
+    <button onclick="alertDivision()">/</button>
+    <button onclick="alertSubtraction()">-</button>
+    <button onclick="alertTotal()">+</button>
+
+    <script>
+      function alertMultiply() {
+        performOperation('X', 'Çarpma');
+      }
+
+      function alertDivision() {
+        performOperation('/', 'Bölme');
+      }
+
+      function alertSubtraction() {
+        performOperation('-', 'Çıkarma');
+      }
+
+      function alertTotal() {
+        performOperation('+', 'Toplama');
+      }
+
+      function performOperation(operator, operationName) {
+        // İki input değerini al
+        let inputValueOne = document.getElementById('inputValueOne').value;
+        let inputValueTwo = document.getElementById('inputValueTwo').value;
+
+        // Girilen değerleri kontrol et
+        if (isNaN(inputValueOne) || isNaN(inputValueTwo)) {
+          alert('Geçersiz değer! Lütfen iki sayı girin.');
+          return;
+        }
+
+        // İki sayı ile matematiksel işlemi gerçekleştir
+        let result;
+        switch (operator) {
+          case 'X':
+            result = parseFloat(inputValueOne) * parseFloat(inputValueTwo);
+            break;
+          case '/':
+            result = parseFloat(inputValueOne) / parseFloat(inputValueTwo);
+            break;
+          case '-':
+            result = parseFloat(inputValueOne) - parseFloat(inputValueTwo);
+            break;
+          case '+':
+            result = parseFloat(inputValueOne) + parseFloat(inputValueTwo);
+            break;
+          default:
+            alert('Geçersiz işlem!');
+            return;
+        }
+
+        // Sonucu alert olarak göster
+        alert(`${operationName} Sonuç: ${result.toFixed(5)}`); // Virgülden sonra 2 basamak göster
+
+        // Inputları temizle
+        document.getElementById('inputValueOne').value = '';
+        document.getElementById('inputValueTwo').value = '';
+      }
+    </script>
+  </body>
+</html>
